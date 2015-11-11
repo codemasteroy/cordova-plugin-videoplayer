@@ -253,6 +253,7 @@ public class VideoPlayer extends CordovaPlugin implements OnCompletionListener, 
 
     @Override
     public void onPrepared(MediaPlayer mp) {
+        mp.setLooping(true);
         mp.start();
     }
 
