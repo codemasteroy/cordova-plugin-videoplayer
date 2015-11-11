@@ -74,7 +74,7 @@ public class VideoPlayer extends CordovaPlugin implements OnCompletionListener, 
             // Create dialog in new thread
             cordova.getActivity().runOnUiThread(new Runnable() {
                 public void run() {
-                    // openVideoDialog(path, options);
+                    openVideoDialog(path, options);
                 }
             });
 
@@ -260,13 +260,14 @@ public class VideoPlayer extends CordovaPlugin implements OnCompletionListener, 
     @Override
     public void onCompletion(MediaPlayer mp) {
         Log.d(LOG_TAG, "MediaPlayer completed");
-        mp.release();
-        dialog.dismiss();
+        // mp.release();
+        // dialog.dismiss();
     }
 
     @Override
     public void onDismiss(DialogInterface dialog) {
         Log.d(LOG_TAG, "Dialog dismissed");
+        mp.release();
         if (callbackContext != null) {
             PluginResult result = new PluginResult(PluginResult.Status.OK);
             result.setKeepCallback(false); // release status callback in JS side
