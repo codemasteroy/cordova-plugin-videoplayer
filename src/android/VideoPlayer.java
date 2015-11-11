@@ -267,7 +267,6 @@ public class VideoPlayer extends CordovaPlugin implements OnCompletionListener, 
     @Override
     public void onDismiss(DialogInterface dialog) {
         Log.d(LOG_TAG, "Dialog dismissed");
-        mp.release();
         if (callbackContext != null) {
             PluginResult result = new PluginResult(PluginResult.Status.OK);
             result.setKeepCallback(false); // release status callback in JS side
